@@ -32,7 +32,7 @@ public class FeriadoController {
     }
 
     @GetMapping("feriados/buscar/{dia}/{mes}/{ano}/{codigo}")
-    public ResponseEntity<FeriadoDto> proximosFeriadosMundiais(@PathVariable String dia, @PathVariable String mes, @PathVariable String ano, @PathVariable String codigo){
+    public ResponseEntity<FeriadoDto> buscarFeriado(@PathVariable String dia, @PathVariable String mes, @PathVariable String ano, @PathVariable String codigo){
         FeriadoDto feriadoDtos = (this.feriadoService.buscarFeriado(dia, mes, ano, codigo));
         return ResponseEntity.ok(feriadoDtos);
     }
