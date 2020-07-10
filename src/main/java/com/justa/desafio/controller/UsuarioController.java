@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RestController(value = "/usuario")
+@RestController
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -20,13 +20,13 @@ public class UsuarioController {
     }
 
     //Chama a função cadastrarUsuario via POST
-    @PostMapping("/cadastrar")
+    @PostMapping("/usuario/cadastrar")
     public ResponseEntity<UsuarioDto> cadastrarUsuario(@RequestBody UsuarioDto usuarioDto){
         return ResponseEntity.ok(this.usuarioService.cadastrarUsuario(usuarioDto));
     }
 
     //Chama a função deletarUsuario via DELETE
-    @DeleteMapping("/deletar")
+    @DeleteMapping("/usuario/deletar")
     public ResponseEntity<UsuarioDto> deletarUsuario(@RequestBody UsuarioDto usuarioDto){
         UsuarioDto usuarioDtoDelete = this.usuarioService.deletarUsuario(usuarioDto);
         if(usuarioDtoDelete == null){
@@ -36,7 +36,7 @@ public class UsuarioController {
     }
 
     //Chama a função consultarUsuarioEmail via GET
-    @GetMapping("/consultaremail/{email}")
+    @GetMapping("/usuario/consultaremail/{email}")
     public ResponseEntity<UsuarioDto> consultarPorEmail(@PathVariable String email){
         UsuarioDto usuarioDto = this.usuarioService.consultarUsuarioEmail(email);
         if(usuarioDto == null){
@@ -46,7 +46,7 @@ public class UsuarioController {
     }
 
     //Chama a função consultarUsuarioKey via GET
-    @GetMapping("/consultarkey/{key}")
+    @GetMapping("/usuario/consultarkey/{key}")
     public ResponseEntity<UsuarioDto> consultarPorKey(@PathVariable String key){
         UsuarioDto usuarioDto = this.usuarioService.consultarUsuarioKey(key);
         if(usuarioDto == null){
@@ -56,7 +56,7 @@ public class UsuarioController {
     }
 
     //Chama a função editarUsuario via PUT
-    @PutMapping("/editar")
+    @PutMapping("/usuario/editar")
     public ResponseEntity<UsuarioDto> editarUsuario(@RequestBody UsuarioDto usuarioDto){
         UsuarioDto usuarioDtoEditado = this.usuarioService.editarUsuario(usuarioDto);
         if(usuarioDtoEditado==null){
@@ -66,7 +66,7 @@ public class UsuarioController {
     }
 
     //Chama a função gerarNovaKey via GET
-    @GetMapping("/gerarnovachave/{email}")
+    @GetMapping("/usuario/gerarnovachave/{email}")
     public ResponseEntity<UsuarioDto> gerarNovaKey(@PathVariable String email){
         UsuarioDto usuarioDto = this.usuarioService.gerarNovaKey(email);
         if(usuarioDto == null){
